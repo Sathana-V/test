@@ -1,0 +1,69 @@
+CREATE DATABASE courseDetails;
+-- Table for users who registered
+CREATE TABLE users(
+      user_name varchar(20) not null,
+      password varchar(20) not null,
+      email varchar(50) not null,
+      type bit not null,
+      primary KEY(email)
+);
+-- 1 refers to staffs and 0 refers to students
+INSERT INTO `users` VALUES ('xxx','1234','xxx@email.com',1);
+INSERT INTO `users` VALUES ('yyy','4321','yyy@email.com',1);
+INSERT INTO `users` VALUES ('zzz','4091','zzz@email.com',1);
+INSERT INTO `users` VALUES ('stud1','19ISR180','stud1.19cse@kongu.edu',0);
+INSERT INTO `users` VALUES ('stud2','19ISR181','stud2.19cse@kongu.edu',0);
+INSERT INTO `users` VALUES ('stud3','19ISR182','stud3.19cse@kongu.edu',0);
+
+-- Table for accepted courses
+CREATE table course_list(
+	courseName varchar(200) not null,
+	courseCode char(20) not null,
+	fName varchar(200)  not null,
+	fEmail varchar(50)  not null,
+	credit int  not null,
+	duration char(20),
+	fee int  not null,	
+	fileName varchar(200),
+	fileId int not null AUTO_INCREMENT,
+	filesize char(10),		
+	PRIMARY KEY(courseCode),
+	unique key(fileId)
+);
+
+INSERT INTO `course_list` VALUES ('DAA','19IT056','xxxx','xxx@gmail.com',3,'3 months',1000,'AA(1).pdf',1,'1000kb');
+INSERT INTO `course_list` VALUES ('DSS','19IT096','yyyy','yyy@gmail.com',2,'2 months',1000,'BB(1).pdf',2,'1300kb');
+INSERT INTO `course_list` VALUES ('python','19IT016','zzz','zzz@gmail.com',1,'1 months',1000,'CC(1).pdf',3,'700kb');
+
+-- Table for staff use (for proposal of course)
+create table proposed_courses(
+	fName varchar(250) not null,
+	courseName varchar(200) not null,
+	credits int not null,
+	fee int(10) not null,
+	fEmail varchar(50) not null,
+	fileName varchar(200),
+	fileId int not null AUTO_INCREMENT,
+	fileSize char(20),
+	PRIMARY key(fEmail),
+	UNIQUE KEY(fileId)
+);
+INSERT INTO `proposed_courses`(`fName`, `courseName`, `credits`, `fee`, `fEmail`, `fileName`, `fileSize`) VALUES ('yyy','DSS',2,1000,'yyy@gmail.com','BB(1).pdf','1200KB');
+INSERT INTO `proposed_courses`(`fName`, `courseName`, `credits`, `fee`, `fEmail`, `fileName`, `fileSize`) VALUES ('zzz','Python',1,1000,'zzz@gmail.com','CC(1).pdf','700KB');
+INSERT INTO `proposed_courses`(`fName`, `courseName`, `credits`, `fee`, `fEmail`, `fileName`, `fileSize`) VALUES ('xxx','DAA',3,1000,'xxx@gmail.com','AA(1).pdf','1000KB');
+
+-- Table for students who registered for particular course
+create table course_register(
+	studName varchar(20) not null,
+	rollNo char(20),
+	studEmail varchar(50) not null,
+	year int not null,
+	department varchar(20) not null,
+	section char(5) not null,
+	courseCode char(10) not null,
+	courseName varchar(20) not null,
+	PRIMARY KEY(rollNo)
+);
+INSERT INTO course_register VALUES ('stud1','19ISR180','stud119cse@kongu.edu',3,'CSE','D','19IT096','DSS');
+INSERT INTO course_register VALUES ('stud2','19ISR181','stud219cse@kongu.edu',3,'CSE','D','19IT016','Python');
+INSERT INTO course_register VALUES ('stud3','19ISR182','stud319cse@kongu.edu',3,'CSE','D','19IT056','DAA');
