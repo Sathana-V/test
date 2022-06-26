@@ -30,7 +30,7 @@ CREATE table course_list(
 	PRIMARY KEY(courseCode),
 	unique key(fileId)
 );
-
+INSERT INTO `course_list` VALUES ('DAA','19IT056','xxxx','xxx@gmail.com',3,'3 months',1000,'AA(1).pdf',1,'1000kb');
 INSERT INTO `course_list` VALUES ('DAA','19IT056','xxxx','xxx@gmail.com',3,'3 months',1000,'AA(1).pdf',1,'1000kb');
 INSERT INTO `course_list` VALUES ('DSS','19IT096','yyyy','yyy@gmail.com',2,'2 months',1000,'BB(1).pdf',2,'1300kb');
 INSERT INTO `course_list` VALUES ('python','19IT016','zzz','zzz@gmail.com',1,'1 months',1000,'CC(1).pdf',3,'700kb');
